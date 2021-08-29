@@ -1,0 +1,13 @@
+[package]
+name = "enet-rs"
+description = "A ENet library for Rust."
+version = "0.1.0"
+authors = ["ZTz"]
+edition = "2018"
+include = ["src/**/*", "build.rs"]
+
+[dependencies.libc]
+version = "0.2.101"
+
+[build-dependencies.cmake]
+version = "0.1.45"
