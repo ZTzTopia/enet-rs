@@ -3,7 +3,6 @@
 [![Documentation](https://docs.rs/enet-rs/badge.svg)](https://docs.rs/enet)
 [![Crates.io](https://img.shields.io/crates/v/enet-rs.svg)](https://crates.io/crates/enet)
 [![License](https://img.shields.io/crates/l/enet-rs.svg)](https://github.com/futile/enet-rs)
-[![Code Refactor](https://www.codefactor.io/repository/github/ZTzTopia/LatieDiscordBot/badge)](https://www.codefactor.io/repository/github/ZTzTopia/LatieDiscordBot/badge)
 
 Rust bindings for [ENet](http://enet.bespin.org) library, the reliable UDP networking library.
 
