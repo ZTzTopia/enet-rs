@@ -2,7 +2,7 @@
  * time.rs
  *
  * ENet time constants and macros
-*/
+ */
 
 #[macro_export]
 macro_rules! ENET_TIME_OVERFLOW {

@@ -6,7 +6,7 @@ use crate::types::SOCKET;
  * utility.rs
  *
  * ENet utility header
-*/
+ */
 
 #[macro_export]
 macro_rules! ENET_MAX {

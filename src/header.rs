@@ -9,7 +9,8 @@ use crate::{
  * header.rs
  *
  * ENet Unix and Win32 header
-*/
+ */
+
 pub type ENetSocket = SOCKET;
 
 pub const ENET_SOCKET_NULL: c_char = INVALID_SOCKET;
@@ -48,8 +49,7 @@ macro_rules! ENET_NET_TO_HOST_32 {
 
 #[repr(C)]
 #[derive(Debug, Clone)]
-pub struct ENetBuffer
-{
+pub struct ENetBuffer {
     pub dataLength: size_t,
     pub data: *mut c_void,
 }

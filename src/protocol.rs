@@ -6,7 +6,7 @@ use crate::types::{enet_uint8, enet_uint16, enet_uint32};
  * protocol.rs
  *
  * ENet protocol
-*/
+ */
 
 pub const ENET_PROTOCOL_MINIMUM_MTU: c_int = 576;
 pub const ENET_PROTOCOL_MAXIMUM_MTU: c_int = 4096;
@@ -58,7 +58,7 @@ pub enum ENetProtocolFlag {
 
     ENET_PROTOCOL_HEADER_FLAG_COMPRESSED = (1 << 14),
     ENET_PROTOCOL_HEADER_FLAG_SENT_TIME = (1 << 15),
-    ENET_PROTOCOL_HEADER_FLAG_MASK = (1 << 14) | (1 << 15),
+    ENET_PROTOCOL_HEADER_FLAG_MASK = crate::protocol::ENetProtocolFlag::ENET_PROTOCOL_HEADER_FLAG_COMPRESSED | crate::protocol::ENetProtocolFlag::ENET_PROTOCOL_HEADER_FLAG_SENT_TIME,
 
     ENET_PROTOCOL_HEADER_SESSION_MASK = (3 << 12),
     ENET_PROTOCOL_HEADER_SESSION_SHIFT = 12,

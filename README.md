@@ -19,6 +19,12 @@ enet-rs = "1.3.17"
 
 `server.rs`:
 ```rust
+use enet_rs::enet::{
+    ENET_HOST_ANY,
+    ENetAddress,
+    enet_host_create,
+};
+
 fn main() {
     let address = ENetAddress {
         host: ENET_HOST_ANY,
@@ -44,6 +50,18 @@ fn main() {
 
 `client.rs`:
 ```rust
+use std::ptr::null;
+use std::mem::MaybeUninit;
+use std::ffi::CString;
+use enet_rs::enet::{
+    ENetEventType,
+    enet_host_create,
+    enet_address_set_host,
+    enet_host_connect,
+    enet_host_service,
+    enet_peer_reset
+};
+
 fn main() {
     unsafe {
         let client = enet_host_create(null(),

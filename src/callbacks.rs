@@ -4,7 +4,7 @@ use libc::{c_void, size_t};
  * callbacks.rs
  *
  * ENet callbacks
-*/
+ */
 
 #[repr(C)]
 pub struct ENetCallbacks {

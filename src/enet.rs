@@ -57,15 +57,13 @@ pub type ENetVersion = enet_uint32;
 
 #[repr(C)]
 #[derive(Debug)]
-pub enum ENetSocketType
-{
+pub enum ENetSocketType {
     ENET_SOCKET_TYPE_STREAM = 1,
     ENET_SOCKET_TYPE_DATAGRAM = 2,
 }
 
 #[derive(Debug)]
-pub enum ENetSocketWait
-{
+pub enum ENetSocketWait {
     ENET_SOCKET_WAIT_NONE = 0,
     ENET_SOCKET_WAIT_SEND = (1 << 0),
     ENET_SOCKET_WAIT_RECEIVE = (1 << 1),
@@ -74,8 +72,7 @@ pub enum ENetSocketWait
 
 #[repr(C)]
 #[derive(Debug)]
-pub enum ENetSocketOption
-{
+pub enum ENetSocketOption {
     ENET_SOCKOPT_NONBLOCK = 1,
     ENET_SOCKOPT_BROADCAST = 2,
     ENET_SOCKOPT_RCVBUF = 3,
@@ -89,8 +86,7 @@ pub enum ENetSocketOption
 
 #[repr(C)]
 #[derive(Debug)]
-pub enum ENetSocketShutdown
-{
+pub enum ENetSocketShutdown {
     ENET_SOCKET_SHUTDOWN_READ = 0,
     ENET_SOCKET_SHUTDOWN_WRITE = 1,
     ENET_SOCKET_SHUTDOWN_READ_WRITE = 2,
@@ -112,8 +108,7 @@ pub const ENET_PORT_ANY: c_uint = 0;
  */
 #[repr(C)]
 #[derive(Debug, Clone)]
-pub struct ENetAddress
-{
+pub struct ENetAddress {
     pub host: enet_uint32,
     pub port: enet_uint16,
 }
@@ -130,8 +125,7 @@ pub struct ENetAddress
  * [`ENetPacket`]: ENetPacket
  */
 #[derive(Debug)]
-pub enum ENetPacketFlag
-{
+pub enum ENetPacketFlag {
     /**
      * packet must be received by the target peer and resend attempts should be
      * made until the packet is delivered */
@@ -150,7 +144,7 @@ pub enum ENetPacketFlag
     ENET_PACKET_FLAG_UNRELIABLE_FRAGMENT = (1 << 3),
 
     /** whether the packet has been sent from all queues it has been entered into */
-    ENET_PACKET_FLAG_SENT = (1<<8)
+    ENET_PACKET_FLAG_SENT = (1 << 8)
 }
 
 pub type ENetPacketFreeCallback = Option<unsafe extern "C" fn(packet: *mut ENetPacket)>;
@@ -183,8 +177,7 @@ pub type ENetPacketFreeCallback = Option<unsafe extern "C" fn(packet: *mut ENetP
  */
 #[repr(C)]
 #[derive(Debug)]
-pub struct ENetPacket
-{
+pub struct ENetPacket {
     /** internal use only */
     pub referenceCount: size_t,
     /** bitwise-or of ENetPacketFlag constants */
@@ -200,16 +193,14 @@ pub struct ENetPacket
 }
 
 #[repr(C)]
-pub struct ENetAcknowledgement
-{
+pub struct ENetAcknowledgement {
     pub acknowledgementList: ENetListNode,
     pub sentTime: enet_uint32,
     pub command: ENetProtocol,
 }
 
 #[repr(C)]
-pub struct ENetOutgoingCommand
-{
+pub struct ENetOutgoingCommand {
     pub outgoingCommandList: ENetListNode,
     pub reliableSequenceNumber: enet_uint16,
     pub unreliableSequenceNumber: enet_uint16,
@@ -224,8 +215,7 @@ pub struct ENetOutgoingCommand
 }
 
 #[repr(C)]
-pub struct ENetIncomingCommand
-{
+pub struct ENetIncomingCommand {
     pub incomingCommandList: ENetListNode,
     pub reliableSequenceNumber: enet_uint16,
     pub unreliableSequenceNumber: enet_uint16,
@@ -238,8 +228,7 @@ pub struct ENetIncomingCommand
 
 #[repr(C)]
 #[derive(Debug)]
-pub enum ENetPeerState
-{
+pub enum ENetPeerState {
     ENET_PEER_STATE_DISCONNECTED = 0,
     ENET_PEER_STATE_CONNECTING = 1,
     ENET_PEER_STATE_ACKNOWLEDGING_CONNECT = 2,
@@ -319,8 +308,7 @@ pub const ENET_PEER_FREE_RELIABLE_WINDOWS: c_int = 8;
 
 #[repr(C)]
 #[derive(Debug)]
-pub struct ENetChannel
-{
+pub struct ENetChannel {
     pub outgoingReliableSequenceNumber: enet_uint16,
     pub outgoingUnreliableSequenceNumber: enet_uint16,
     pub usedReliableWindows: enet_uint16,
@@ -332,8 +320,7 @@ pub struct ENetChannel
 }
 
 #[derive(Debug)]
-pub enum ENetPeerFlag
-{
+pub enum ENetPeerFlag {
     ENET_PEER_FLAG_NEEDS_DISPATCH = (1 << 0)
 }
 
@@ -344,8 +331,7 @@ pub enum ENetPeerFlag
  */
 #[repr(C)]
 #[derive(Debug)]
-pub struct ENetPeer
-{
+pub struct ENetPeer {
     pub dispatchList: ENetListNode,
     pub host: *mut ENetHost,
     pub outgoingPeerID: enet_uint16,
@@ -419,8 +405,7 @@ pub struct ENetPeer
  */
 #[repr(C)]
 #[derive(Debug, Clone)]
-pub struct ENetCompressor
-{
+pub struct ENetCompressor {
     /** Context data for the compressor. Must be non-NULL. */
     pub context: *mut c_void,
     /** Compresses from inBuffers[0:inBufferCount-1], containing inLimit bytes, to outData, outputting at most outLimit bytes. Should return 0 on failure. */
@@ -478,8 +463,7 @@ pub type ENetInterceptCallback = Option<unsafe extern "C" fn(host: *mut ENetHost
  */
 #[repr(C)]
 #[derive(Clone)]
-pub struct ENetHost
-{
+pub struct ENetHost {
     pub socket: ENetSocket,
     /** Internet address of the host */
     pub address: ENetAddress,
@@ -540,8 +524,7 @@ pub struct ENetHost
  */
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub enum ENetEventType
-{
+pub enum ENetEventType {
     /** no event occurred within the specified time limit */
     ENET_EVENT_TYPE_NONE       = 0,
 
@@ -580,8 +563,7 @@ pub enum ENetEventType
  */
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct ENetEvent
-{
+pub struct ENetEvent {
     /** type of the event */
     pub type_: ENetEventType,
     /** peer that generated a connect, disconnect or receive event */

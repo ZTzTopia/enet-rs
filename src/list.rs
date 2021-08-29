@@ -4,12 +4,11 @@ use libc::{c_void, size_t};
  * list.rs
  *
  * ENet list management
-*/
+ */
 
 #[repr(C)]
 #[derive(Debug, Clone)]
-pub struct ENetListNode
-{
+pub struct ENetListNode {
     pub next: *mut ENetListNode,
     pub previous: *mut ENetListNode,
 }
@@ -18,8 +17,7 @@ pub type ENetListIterator = *mut ENetListNode;
 
 #[repr(C)]
 #[derive(Debug, Clone)]
-pub struct ENetList
-{
+pub struct ENetList {
     pub sentinel: ENetListNode,
 }
 
