@@ -3,6 +3,7 @@
 [![Documentation](https://docs.rs/enet-rs/badge.svg)](https://docs.rs/enet)
 [![Crates.io](https://img.shields.io/crates/v/enet-rs.svg)](https://crates.io/crates/enet)
 [![License](https://img.shields.io/crates/l/enet-rs.svg)](https://github.com/futile/enet-rs)
+[![Code Refactor](https://www.codefactor.io/repository/github/ZTzTopia/LatieDiscordBot/badge)](https://www.codefactor.io/repository/github/ZTzTopia/LatieDiscordBot/badge)
 
 Rust bindings for [ENet](http://enet.bespin.org) library, the reliable UDP networking library.
 
@@ -22,7 +23,7 @@ enet-rs = "1.3.17"
 fn main() {
     let address = ENetAddress {
         host: ENET_HOST_ANY,
-        port
+        port: 2555
     };
 
     unsafe {
@@ -58,7 +59,7 @@ fn main() {
         let mut address_ = MaybeUninit::uninit();
         enet_address_set_host(address_.as_mut_ptr(), (&CString::new("127.0.0.1").unwrap()).as_ptr());
         let mut address = address_.assume_init();
-        address.port = 8080;
+        address.port = 2555;
 
         let peer = enet_host_connect(client, &address, 2, 0);
         if peer.is_null() {
@@ -82,6 +83,7 @@ fn main() {
 ```
 
 ### Full Examples
+
 Full examples, detailing and explaining usage of the basic functionality of the library, can be found in the `examples` directory.
 
 ## Documentation
@@ -90,4 +92,4 @@ Documentation is available by running `cargo doc` or visit [docs.rs](https://doc
 
 ## License
 
-All first-party crates are licensed under ISC
+enet-rs is licensed under the [ISC](https://github.com/ZTzTopia/enet-rs/blob/main/LICENSE.md) license. See the file `LICENSE.md` for more information.
